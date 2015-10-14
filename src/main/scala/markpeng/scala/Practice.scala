@@ -46,6 +46,19 @@ object Practice {
     //    var afterDelete = newList.filterNot { x => x == 3 }
     val afterDelete = newList.filterNot(_ == 3)
     println(afterDelete)
+
+    // for comprehension
+    // imperative form
+    val aList = List(1, 2, 3)
+    val bList = List(4, 5, 6)
+
+    for { a <- aList; b <- bList } println(a + b)
+
+    // functional form
+    val result = for { a <- aList; b <- bList } yield a + b
+    for (r <- result) println(r)
+    
+    
   }
 }
 
