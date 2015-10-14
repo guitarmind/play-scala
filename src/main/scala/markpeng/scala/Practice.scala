@@ -98,6 +98,7 @@ object Practice {
     ordinal(1)
     ordinal(2)
     ordinal(3)
+    ordinal(0)
   }
 }
 
