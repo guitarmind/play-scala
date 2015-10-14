@@ -6,6 +6,7 @@ object Practice {
   def breakable(op: => Unit) {
     try {
       op
+      // case _ equals to default !
     } catch { case _: Exception => }
   }
 
@@ -18,6 +19,32 @@ object Practice {
       break
     }
     println("found scala home!!!")
+  }
+
+  def printType(obj: AnyRef) = obj match {
+    case s: String => println("This is a String")
+    case l: List[_] => println("This is a List")
+    case a: Array[_] => println("This is a Array")
+    case d: java.util.Date => println("This is a date")
+    case _ => println("Unsupported type!")
+  }
+
+  def rangeMatcher(num: Int) = num match {
+    case within10 if within10 <= 10 => println("with in 0 to 10")
+    case within100 if within100 <= 100 => println("with in 11 to 100")
+    case beyond100 if beyond100 < Integer.MAX_VALUE => println("beyond 100")
+  }
+
+  val suffixes = List(
+    "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th")
+
+  def ordinal(number: Int) = number match {
+    case tenTo20 if 10 to 20 contains tenTo20 => number + "th"
+    case rest => {
+      val out = rest + suffixes(number % 10)
+      println(out)
+      out
+    }
   }
 
   def main(args: Array[String]) {
@@ -57,8 +84,20 @@ object Practice {
     // functional form
     val result = for { a <- aList; b <- bList } yield a + b
     for (r <- result) println(r)
-    
-    
+
+    // print types
+    printType(result)
+    printType("Hello")
+    printType(new java.util.Date())
+
+    // guard clause
+    rangeMatcher(123)
+
+    // ordinal
+    ordinal(999)
+    ordinal(1)
+    ordinal(2)
+    ordinal(3)
   }
 }
 
