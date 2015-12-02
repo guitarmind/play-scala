@@ -3,6 +3,7 @@ package markpeng.scala.learningscala
 object Ch7Ex {
   def main(args: Array[String]) {
     // Ex 1.
+    @annotation.tailrec
     def fibAdd(l: List[Int], count: Int): List[Int] = {
       if (count < 1) l
       else {
